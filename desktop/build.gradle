@@ -1,0 +1,13 @@
+apply plugin: "java"
+apply plugin: "application"
+
+sourceCompatibility = 1.6
+mainClassName = "com.badlogic.gradletest.DesktopLauncher"
+
+dependencies {
+    compile project(":core")
+    compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+    compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+}
+
+// sourceSets.main.resources.srcDirs = ["../android/assets"]

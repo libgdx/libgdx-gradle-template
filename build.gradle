@@ -1,0 +1,14 @@
+subprojects {
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    
+    version = "1.0"
+    ext.gdxVersion = "0.9.9-SNAPSHOT"
+    
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}

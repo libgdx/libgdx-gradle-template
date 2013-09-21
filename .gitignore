@@ -4,3 +4,15 @@
 *.jar
 *.war
 *.ear
+*.iml
+*.so
+.classpath
+.project
+.settings/
+.gradle/
+.idea/
+build/
+bin/
+out/
+gen/
+local.properties
