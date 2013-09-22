@@ -11,3 +11,10 @@ dependencies {
 }
 
 sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]
+
+idea {
+    module {
+        // idea doesn't like relative paths outside of content root...
+        sourceSets.main.resources.srcDirs = []
+    }
+}
