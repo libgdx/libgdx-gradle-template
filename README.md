@@ -1,7 +1,9 @@
 libgdx-gradle-template
 ======================
 
-Gradle template for libgdx projects that works on the CLI, Eclipse and Intellij IDEA.
+Gradle template for libgdx projects that works on the CLI, Eclipse and Intellij IDEA. This tempate will eventually
+replace the libgdx Setup-UI currently in use. To get started **[Download the template](https://github.com/libgdx/libgdx-gradle-template/archive/master.zip)**
+or fork and clone this repository.
 
 ### A word about Gradle
 [Gradle](http://www.gradle.org/) is a nifty build and dependency managment system. A build system allows you to easily
