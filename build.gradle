@@ -4,8 +4,8 @@ buildscript {
 }
 
 allprojects {
-    apply plugin: 'eclipse'
-    apply plugin: 'idea'
+    apply plugin: "eclipse"
+    apply plugin: "idea"
     
     version = "1.0"
     ext.gdxVersion = "0.9.9-SNAPSHOT"
@@ -20,6 +20,7 @@ project(":core") {
     apply plugin: "java"
     
     dependencies {
+        compile "com.esotericsoftware.kryo:kryo:2.16"
     }
 }
 
