@@ -164,3 +164,14 @@ To run/debug the Android project, first create a run configuration:
   
 To run/debug the desktop project, just select the run configuration you just created
 and then either click the green play button, or the green play button with the bug.
+
+### Dependency Management
+One of the benefits of Gradle and similar systems like Maven or Ivy, is that integrating
+third party dependencies in your project is really simple. It also has the benfit that
+your project file tree doesn't contain any JAR files or other 3rd party resources, keeping
+things clean and tidy. Every time your or a team mate invoke a Gradle task, the 
+dependencies of your project will get checked and updated if necessary.
+
+How and where do you specify dependencies?
+
+TBD see build.gradle in root for now
