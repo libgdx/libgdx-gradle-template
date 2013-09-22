@@ -106,20 +106,20 @@ little glitch that will get resolved shorty.
 
 Now you can import the projects into Eclipse
 
-  1) File -> Import ... -> General -> Existing projects into Workspace
-  2) Click 'Browse', select the root folder of the project. You should see the core, android and desktop project.
-  3) Make sure the three projects are checked, then click 'OK'
+  1. File -> Import ... -> General -> Existing projects into Workspace
+  2. Click 'Browse', select the root folder of the project. You should see the core, android and desktop project.
+  3. Make sure the three projects are checked, then click 'OK'
 
 #### Running/Debugging in Eclipse
 To run/debug the desktop project: 
-  1) Right click the desktop project in the package viewer
-  2) Select either 'Run As' or 'Debug As'
-  3) Select 'Java Application'
+  1. Right click the desktop project in the package viewer
+  2. Select either 'Run As' or 'Debug As'
+  3. Select 'Java Application'
   
 To run/debug the Android project:
-  1) Right click the Android project in the package viewer
-  2) Select either 'Run As' or 'Debug As'
-  3) Select 'Android Application'
+  1. Right click the Android project in the package viewer
+  2. Select either 'Run As' or 'Debug As'
+  3. Select 'Android Application'
   
 ### Intellij Idea Usage
 You can let Gradle generate Intellij Idea project for your application easily:
@@ -128,37 +128,37 @@ You can let Gradle generate Intellij Idea project for your application easily:
     
 Once Gradle is done, you can open the projects in Intellij Idea:
 
-  1) File -> Open
-  2) Select the .ipr file in the root of the project, Click 'OK'
+  1. File -> Open
+  2. Select the .ipr file in the root of the project, Click 'OK'
   
 You'll need to set the Android SDK on the Android module before continuing:
 
-  1) File -> Project Structure ...
-  2) Select 'modules' in the left side panel
-  3) Select the 'android' module in the modules panel
-  4) Set 'Module SDK' to the Android SDK you configured for IntelliJ Idea
+  1. File -> Project Structure ...
+  2. Select 'modules' in the left side panel
+  3. Select the 'android' module in the modules panel
+  4. Set 'Module SDK' to the Android SDK you configured for IntelliJ Idea
   
 #### Running/Debugging in Intellij Idea
 To run/debug the desktop project, first create a run configuration:
 
-  1) Run -> Edit Configurations
-  2) Click the plus ('+') in the top left corner, select 'Application'
-  3) Set the Name of the configuration, e.g. 'Desktop'
-  4) Set the Main Class to 'DesktopLauncher', by clicking on the button on the left of the field
-  5) Set the Working Directory to $root/android/assets, by clicking on the button on the left of the field
-  6) Set 'Use classpath of module' to 'desktop'
-  7) Click 'OK'
+  1. Run -> Edit Configurations
+  2. Click the plus ('+') in the top left corner, select 'Application'
+  3. Set the Name of the configuration, e.g. 'Desktop'
+  4. Set the Main Class to 'DesktopLauncher', by clicking on the button on the left of the field
+  5. Set the Working Directory to $root/android/assets, by clicking on the button on the left of the field
+  6. Set 'Use classpath of module' to 'desktop'
+  7. Click 'OK'
   
 To run/debug the desktop project, just select the run configuration you just created
 and then either click the green play button, or the green play button with the bug.
 
 To run/debug the Android project, first create a run configuration:
 
-  1) Run -> Edit Configurations
-  2) Click the plus ('+') in the top left corner, select 'Android Application'
-  3) Set the Name of the configuration, e.g. 'Android'
-  4) Set 'Module' to 'Android'
-  7) Click 'OK'
+  1. Run -> Edit Configurations
+  2. Click the plus ('+') in the top left corner, select 'Android Application'
+  3. Set the Name of the configuration, e.g. 'Android'
+  4. Set 'Module' to 'Android'
+  7. Click 'OK'
   
 To run/debug the desktop project, just select the run configuration you just created
 and then either click the green play button, or the green play button with the bug.
