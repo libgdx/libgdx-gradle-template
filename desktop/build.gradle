@@ -1,20 +1,6 @@
-apply plugin: "java"
-apply plugin: "application"
-
 sourceCompatibility = 1.6
 mainClassName = "com.badlogic.gradletest.DesktopLauncher"
-
-dependencies {
-    compile project(":core")
-    compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-    compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-}
-
 sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]
 
-idea {
-    module {
-        // idea doesn't like relative paths outside of content root...
-        sourceSets.main.resources.srcDirs = []
-    }
-}
+// idea doesn't like relative paths outside of content root...
+idea.module { sourceSets.main.resources.srcDirs = [] }
