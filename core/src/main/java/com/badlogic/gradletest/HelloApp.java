@@ -6,8 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.physics.bullet.Bullet;
+
 
 public class HelloApp extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -17,12 +16,12 @@ public class HelloApp extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
-		try {
-			new FreeTypeFontGenerator(Gdx.files.internal("test.fnt"));
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		Bullet.init();
+//		try {
+//			new FreeTypeFontGenerator(Gdx.files.internal("test.fnt"));
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		Bullet.init();
 	}
 
 	@Override
