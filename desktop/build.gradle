@@ -10,4 +10,4 @@ dependencies {
     compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
 }
 
-// sourceSets.main.resources.srcDirs = ["../android/assets"]
+sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]

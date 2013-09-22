@@ -5,6 +5,8 @@
 *.war
 *.ear
 *.iml
+*.ipr
+*.iws
 *.so
 .classpath
 .project

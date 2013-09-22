@@ -9,7 +9,17 @@ buildscript {
 }
 
 apply plugin: "android"
-apply plugin: "eclipse"
+
+configurations {
+    natives
+}
+
+dependencies {
+    compile project(":core")
+    compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+}
 
 android {
     buildToolsVersion "17.0"
@@ -29,22 +39,15 @@ android {
     }
 }
 
-configurations {
-    natives
-}
-
-dependencies {
-    compile project(":core")
-    compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
-    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
-    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
-}
-
+// needed to add JNI shared libraries to APK when compiling on CLI
 tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
     println pkgTask
     pkgTask.jniDir new File(projectDir, 'libs')
 }
 
+// called every time gradle gets executed, takes the native dependencies of
+// the natives configuration, and extracts them to the proper libs/ folders
+// so they get packed with the APK.
 task copyAndroidNatives() { 
     file("libs/armeabi/").mkdirs();
     file("libs/armeabi-v7a/").mkdirs();
@@ -59,8 +62,7 @@ task copyAndroidNatives() {
     }
 }
 
-import org.gradle.plugins.ide.eclipse.model.SourceFolder
-
+// sets up the Android Eclipse project, using the old Ant based build.
 eclipse {
     // need to specify Java source sets explicitely, SpringSource Gradle Eclipse plugin
     // ignores any nodes added in classpath.file.withXml
@@ -88,4 +90,9 @@ eclipse {
         buildCommand "org.eclipse.jdt.core.javabuilder"
         buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
     }
+}
+
+// sets up the Android Idea project, using the old Ant based build.
+idea {
+    
 }
