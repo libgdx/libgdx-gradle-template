@@ -48,3 +48,7 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
     }
 }
+
+tasks.eclipse.doLast {
+	delete ".project"
+}
