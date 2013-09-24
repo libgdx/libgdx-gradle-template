@@ -103,7 +103,7 @@ You can let Gradle generate Eclipse projects for your application easily:
 
     ./gradlew eclipse
     
-Once Gradle is done, delete the .project file in the root directory of the project. This is a 
+Once Gradle is done, **delete the .project file in the root directory of the project**. This is a 
 little glitch that will get resolved shorty.
 
 Now you can import the projects into Eclipse
