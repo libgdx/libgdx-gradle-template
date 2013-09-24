@@ -10,3 +10,7 @@ tasks.ideaModule.doFirst {
 	println "huzzs"
 	sourceSets.main.resources.srcDirs = [] 
 }
+
+eclipse.project {
+    name = appName + "-desktop"
+}

@@ -5,3 +5,7 @@ sourceCompatibility = 1.6
 dependencies {
     compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 }
+
+eclipse.project {
+    name = appName
+}

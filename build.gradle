@@ -8,6 +8,7 @@ allprojects {
     apply plugin: "idea"
     
     version = "1.0"
+    ext.appName = "mygame"
     ext.gdxVersion = "0.9.9-SNAPSHOT"
     
     repositories {
