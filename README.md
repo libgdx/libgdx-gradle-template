@@ -88,7 +88,7 @@ This will create a ZIP file in the folder desktop/build/distributions, ready to 
 #### Running the Android project
 To run the Android project, issues this gradle command:
 
-   ./gradlew android:installDebug
+    ./gradlew android:installDebug
    
 This will compile the APK for Android, and install it on a connected device. You will have to
 start the app manually on the device.
