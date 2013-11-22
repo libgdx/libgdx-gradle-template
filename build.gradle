@@ -4,18 +4,20 @@ buildscript {
 }
 
 allprojects {
-    apply plugin: "eclipse"
-    apply plugin: "idea"
-    
     version = "1.0"
     ext.appName = "mygame"
-    ext.gdxVersion = "0.9.9-SNAPSHOT"
+    ext.gdxVersion = "0.9.9" // Use "1.0-SNAPSHOT" for nightly build
     
     repositories {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         mavenLocal();
     }
+}
+
+subprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
 }
 
 project(":core") {
@@ -48,8 +50,4 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
     }
-}
-
-tasks.eclipse.doLast {
-	delete ".project"
 }
