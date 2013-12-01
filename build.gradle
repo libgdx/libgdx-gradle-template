@@ -4,6 +4,8 @@ buildscript {
 }
 
 allprojects {
+    apply plugin: "idea"
+
     version = "1.0"
     ext.appName = "mygame"
     ext.gdxVersion = "0.9.9" // Use "1.0-SNAPSHOT" for nightly build
@@ -17,7 +19,6 @@ allprojects {
 
 subprojects {
     apply plugin: "eclipse"
-    apply plugin: "idea"
 }
 
 project(":core") {
