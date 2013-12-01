@@ -6,9 +6,8 @@ mainClassName = "com.badlogic.gradletest.DesktopLauncher"
 sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]
 
 // idea doesn't like relative paths outside of content root...
-tasks.ideaModule.doFirst { 
-	println "huzzs"
-	sourceSets.main.resources.srcDirs = [] 
+tasks.ideaModule.doFirst {
+	sourceSets.main.resources.srcDirs = []
 }
 
 eclipse.project {
