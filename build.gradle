@@ -4,7 +4,7 @@ buildscript {
 }
 
 allprojects {
-    apply plugin: "idea"
+    apply plugin: 'idea'
 
     version = "1.0"
     ext.appName = "mygame"
@@ -23,9 +23,14 @@ subprojects {
 
 project(":core") {
     apply plugin: "java"
-    
+    sourceCompatibility = 1.7
+
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+
+    eclipse.project {
+        name = appName
     }
 }
 
@@ -33,21 +38,24 @@ project(":desktop") {
     apply plugin: "java"
     apply plugin: "application"
 
+    sourceCompatibility = 1.7
+
+    run {
+        ignoreExitValue = true
+    }
+
+    mainClassName = "com.badlogic.gradletest.DesktopLauncher"
+
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
 
-    mainClassName = "com.badlogic.gradletest.DesktopLauncher"
     sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]
 
     eclipse.project {
         name = appName + "-desktop"
-    }
-
-    run {
-        ignoreExitValue = true
     }
 }
 
