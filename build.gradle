@@ -32,11 +32,22 @@ project(":core") {
 project(":desktop") {
     apply plugin: "java"
     apply plugin: "application"
-    
+
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+
+    mainClassName = "com.badlogic.gradletest.DesktopLauncher"
+    sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]
+
+    eclipse.project {
+        name = appName + "-desktop"
+    }
+
+    run {
+        ignoreExitValue = true
     }
 }
 
