@@ -99,13 +99,13 @@ project(":android") {
 // the natives configuration, and extracts them to the proper libs/ folders
 // so they get packed with the APK.
     task copyAndroidNatives() {
-        file("android/libs/armeabi/").mkdirs();
-        file("android/libs/armeabi-v7a/").mkdirs();
+        file("libs/armeabi/").mkdirs();
+        file("libs/armeabi-v7a/").mkdirs();
 
         configurations.natives.files.each { jar ->
             def outputDir = null
-            if (jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("android/libs/armeabi-v7a")
-            if (jar.name.endsWith("natives-armeabi.jar")) outputDir = file("android/libs/armeabi")
+            if (jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
+            if (jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
             if (outputDir != null) {
                 copy {
                     from zipTree(jar)
