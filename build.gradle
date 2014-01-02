@@ -9,7 +9,7 @@ allprojects {
     version = "1.0"
     ext.appName = "mygame"
     ext.gdxVersion = "0.9.9" // Use "1.0-SNAPSHOT" for nightly build
-    
+
     repositories {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
@@ -66,8 +66,106 @@ project(":android") {
 
     dependencies {
         compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"        
+        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+    }
+
+    android {
+        buildToolsVersion "19.0.1"
+        compileSdkVersion 19
+        sourceSets {
+            main {
+                manifest.srcFile 'AndroidManifest.xml'
+                java.srcDirs = ['src']
+                resources.srcDirs = ['src']
+                aidl.srcDirs = ['src']
+                renderscript.srcDirs = ['src']
+                res.srcDirs = ['res']
+                assets.srcDirs = ['assets']
+            }
+
+            instrumentTest.setRoot('tests')
+        }
+    }
+
+// needed to add JNI shared libraries to APK when compiling on CLI
+    tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+        pkgTask.jniFolders = new HashSet<File>()
+        pkgTask.jniFolders.add(new File(projectDir, 'libs'))
+    }
+
+// called every time gradle gets executed, takes the native dependencies of
+// the natives configuration, and extracts them to the proper libs/ folders
+// so they get packed with the APK.
+    task copyAndroidNatives() {
+        file("android/libs/armeabi/").mkdirs();
+        file("android/libs/armeabi-v7a/").mkdirs();
+
+        configurations.natives.files.each { jar ->
+            def outputDir = null
+            if (jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("android/libs/armeabi-v7a")
+            if (jar.name.endsWith("natives-armeabi.jar")) outputDir = file("android/libs/armeabi")
+            if (outputDir != null) {
+                copy {
+                    from zipTree(jar)
+                    into outputDir
+                    include "*.so"
+                }
+            }
+        }
+    }
+
+// sets up the Android Eclipse project, using the old Ant based build.
+    eclipse {
+        // need to specify Java source sets explicitely, SpringSource Gradle Eclipse plugin
+        // ignores any nodes added in classpath.file.withXml
+        sourceSets {
+            main {
+                java.srcDirs "src", 'gen'
+            }
+        }
+
+        jdt {
+            sourceCompatibility = 1.7
+        }
+
+        classpath {
+            plusConfigurations += project.configurations.compile
+            containers 'com.android.ide.eclipse.adt.ANDROID_FRAMEWORK', 'com.android.ide.eclipse.adt.LIBRARIES'
+        }
+
+        project {
+            name = appName + "-android"
+            natures 'com.android.ide.eclipse.adt.AndroidNature'
+            buildCommands.clear();
+            buildCommand "com.android.ide.eclipse.adt.ResourceManagerBuilder"
+            buildCommand "com.android.ide.eclipse.adt.PreCompilerBuilder"
+            buildCommand "org.eclipse.jdt.core.javabuilder"
+            buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
+        }
+    }
+
+// sets up the Android Idea project, using the old Ant based build.
+    idea {
+        module {
+            sourceDirs += file("src");
+            scopes = [COMPILE: [plus: [project.configurations.compile]]]
+
+            iml {
+                withXml {
+                    def node = it.asNode()
+                    def builder = NodeBuilder.newInstance();
+                    builder.current = node;
+                    builder.component(name: "FacetManager") {
+                        facet(type: "android", name: "Android") {
+                            configuration {
+                                option(name: "UPDATE_PROPERTY_FILES", value: "true")
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
