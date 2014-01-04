@@ -1,0 +1,13 @@
+sourceCompatibility = 1.7
+
+run {
+    ignoreExitValue = true
+}
+
+mainClassName = "com.badlogic.gradletest.DesktopLauncher"
+
+sourceSets.main.resources.srcDirs = [file("../android/assets").getAbsolutePath()]
+
+eclipse.project {
+    name = appName + "-desktop"
+}
