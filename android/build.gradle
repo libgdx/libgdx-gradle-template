@@ -25,8 +25,8 @@ android {
 task copyAndroidNatives() {
     configurations.natives.files.each { jar ->
         def outputDir = null
-        if (jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("android/libs/armeabi-v7a")
-        if (jar.name.endsWith("natives-armeabi.jar")) outputDir = file("android/libs/armeabi")
+        if (jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
+        if (jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
         if (outputDir != null) {
             copy {
                 from zipTree(jar)
