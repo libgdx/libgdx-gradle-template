@@ -1,6 +1,12 @@
 libgdx-gradle-template
 ======================
 
+## Notice Jan-14-2014
+This incarnation of the Gradle Template is no longer under active development. Further work is being done in
+the main [libgdx](https://github.com/libgdx/libgdx) project/repo. If you'd like to contribute, you'll find development
+being done inside of the [extensions module](https://github.com/libgdx/libgdx/tree/master/extensions).
+
+
 Gradle template for libgdx projects that works on the CLI, Eclipse and Intellij IDEA. This tempate will eventually
 replace the libgdx Setup-UI currently in use. To get started **[Download the template](https://github.com/libgdx/libgdx-gradle-template/archive/master.zip)**
 or fork and clone this repository.
